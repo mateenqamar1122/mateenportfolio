@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 85 30% 10%;
+    --foreground: 60 30% 90%;
+
+    --card: 85 25% 14%;
+    --card-foreground: 60 30% 90%;
+
+    --popover: 85 25% 14%;
+    --popover-foreground: 60 30% 90%;
+
+    --primary: 72 80% 62%;
+    --primary-foreground: 85 40% 8%;
+
+    --secondary: 85 20% 18%;
+    --secondary-foreground: 60 30% 90%;
+
+    --muted: 85 15% 20%;
+    --muted-foreground: 60 10% 55%;
+
+    --accent: 72 80% 62%;
+    --accent-foreground: 85 40% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 85 15% 22%;
+    --input: 85 15% 22%;
+    --ring: 72 80% 62%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 85 30% 10%;
+    --sidebar-foreground: 60 30% 90%;
+    --sidebar-primary: 72 80% 62%;
+    --sidebar-primary-foreground: 85 40% 8%;
+    --sidebar-accent: 85 20% 18%;
+    --sidebar-accent-foreground: 60 30% 90%;
+    --sidebar-border: 85 15% 22%;
+    --sidebar-ring: 72 80% 62%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .heading-massive {
+    font-family: var(--font-display);
+    @apply text-7xl md:text-[10rem] lg:text-[12rem] font-black uppercase leading-[0.85] tracking-tight;
+    color: hsl(var(--primary));
+    text-shadow: 0 0 80px hsl(72 80% 62% / 0.15);
+  }
+
+  .heading-section {
+    font-family: var(--font-display);
+    @apply text-6xl md:text-8xl lg:text-9xl font-black italic leading-[0.9];
+    color: hsl(var(--primary));
+  }
+
+  .text-body {
+    font-family: var(--font-body);
+    @apply text-sm md:text-base leading-relaxed;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .accent-card {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    @apply rounded-2xl;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    @apply text-sm tracking-wide transition-colors duration-300;
+    color: hsl(var(--muted-foreground));
+  }
+
+  .nav-link:hover {
+    color: hsl(var(--primary));
+  }
+
+  .gear-circle {
+    @apply rounded-full border-2 flex items-center justify-center relative;
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.1);
+  }
+
+  .discover-btn {
+    font-family: var(--font-body);
+    @apply px-6 py-2 rounded-full text-sm font-medium transition-all duration-300;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--foreground));
+  }
+
+  .discover-btn:hover {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+
+  .social-icon {
+    @apply w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300;
+    border-color: hsl(var(--primary-foreground));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .social-icon:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: hsl(var(--primary-foreground));
+  }
+
+  .scroll-indicator {
+    @apply w-10 h-10 rounded-full border flex items-center justify-center animate-bounce;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+  }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
