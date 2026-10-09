@@ -62,32 +62,40 @@ const WorksSection = () => {
 
   return (
     <section id="works" className="min-h-screen px-6 md:px-12 lg:px-20 py-24 relative">
-      <AnimatePresence>
-        {hoveredProject !== null && projects[hoveredProject]?.link && (
+      {/* Preload all iframes hidden to make hover instant */}
+      {projects.map((project, index) => {
+        if (!project.link) return null;
+        const isHovered = hoveredProject === index;
+        return (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            key={project.title}
+            initial={false}
+            animate={{ 
+              opacity: isHovered ? 1 : 0, 
+              scale: isHovered ? 1 : 0.9,
+            }}
             transition={{ duration: 0.2 }}
-            className="fixed pointer-events-none z-50 overflow-hidden rounded-xl shadow-2xl border border-border hidden md:block bg-background"
+            className="fixed pointer-events-none overflow-hidden rounded-xl shadow-2xl border border-border hidden md:block bg-background"
             style={{
               left: mousePos.x + 20,
               top: mousePos.y + 20,
               width: 320,
               height: 200,
+              zIndex: isHovered ? 50 : -10,
             }}
           >
             <div className="w-[1280px] h-[800px] origin-top-left scale-[0.25] pointer-events-none">
               <iframe 
-                src={projects[hoveredProject].link} 
+                src={project.link} 
                 className="w-full h-full border-0 pointer-events-none"
                 tabIndex={-1}
-                title={`${projects[hoveredProject].title} Preview`}
+                loading="lazy"
+                title={`${project.title} Preview`}
               />
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        );
+      })}
 
       <AnimatedSection className="text-center mb-16">
         <h2 className="heading-section mb-6">works</h2>

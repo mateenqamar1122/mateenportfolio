@@ -158,7 +158,7 @@ const ExperienceSection = () => {
           </div>
           <div className="flex flex-col items-center gap-4">
             <motion.a
-              href="mailto:abdulmateen@example.com"
+              href="mailto:mateenqammat@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-3 rounded-full bg-primary-foreground text-primary font-semibold text-sm flex items-center gap-2 transition-all duration-300"

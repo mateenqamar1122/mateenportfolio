@@ -12,7 +12,7 @@ const DownloadResumeButton = ({ size = "md" }: { size?: "sm" | "md" }) => {
   const handleDownload = () => {
     setDownloaded(true);
     const link = document.createElement("a");
-    link.href = "/resume_mmateen_1.pdf";
+    link.href = "/Abdul_Mateen_Resume.pdf";
     link.download = "Abdul_Mateen_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -27,9 +27,9 @@ const DownloadResumeButton = ({ size = "md" }: { size?: "sm" | "md" }) => {
       onClick={handleDownload}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className={`relative overflow-hidden flex items-center gap-1.5 rounded-full border border-primary-foreground/30 text-primary-foreground font-medium transition-colors ${
+      className={`relative overflow-hidden flex items-center gap-1.5 rounded-full border border-white/30 text-white font-medium transition-all duration-300 ${
         isSmall ? "px-3 py-1.5 text-[10px]" : "px-4 py-2 text-xs"
-      } ${downloaded ? "bg-primary-foreground/20" : "hover:bg-primary-foreground/10"}`}
+      } ${downloaded ? "bg-white border-white text-primary-foreground" : "hover:bg-white hover:border-white hover:text-primary-foreground"}`}
     >
       <AnimatePresence mode="wait">
         {downloaded ? (
@@ -71,30 +71,23 @@ const HeroSection = () => {
     <section id="hero" className="relative h-[100dvh] flex flex-col">
       {/* Main card area wrapper - relative for portrait positioning */}
       <div className="relative flex-1 mx-3 sm:mx-4 md:mx-8 lg:mx-10 mt-3 sm:mt-4 md:mt-8 lg:mt-10 mb-0">
-        {/* Green card background */}
+        {/* Main card background */}
         <div className="absolute inset-0 rounded-[1.5rem] md:rounded-[3rem] bg-primary overflow-hidden">
-          {/* Diagonal line texture */}
-          <div className="absolute inset-0 opacity-15 z-0">
-            {[...Array(15)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-[1px] w-[200%] -left-1/4 origin-center"
-                style={{
-                  top: `${i * 9}%`,
-                  background: 'hsl(85, 40%, 8%)',
-                  transform: 'rotate(-25deg)',
-                }}
-              />
-            ))}
-          </div>
+          
+          {/* Background SVG */}
+          <img 
+            src="/hersection.svg" 
+            alt="Background Pattern"
+            className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none"
+          />
 
           {/* Faded repeated text */}
-          <div className="absolute bottom-0 left-0 right-0 overflow-hidden opacity-[0.07] pointer-events-none z-0">
+          <div className="absolute bottom-0 left-0 right-0 overflow-hidden opacity-[0.07] pointer-events-none z-10">
             {[...Array(3)].map((_, i) => (
               <p
                 key={i}
                 className="text-[3rem] sm:text-[4rem] md:text-[9rem] lg:text-[11rem] font-black uppercase leading-[0.9] tracking-tight whitespace-nowrap"
-                style={{ fontFamily: 'var(--font-display)', color: 'hsl(85, 40%, 8%)' }}
+                style={{ fontFamily: 'var(--font-display)', color: 'hsl(var(--primary-foreground))' }}
               >
                 ABDUL MATEEN
               </p>
@@ -103,14 +96,14 @@ const HeroSection = () => {
         </div>
 
         {/* Content layer - text elements */}
-        <div className="relative z-10 flex flex-col h-full px-5 sm:px-6 md:px-8 lg:px-20 pt-5 md:pt-10">
+        <div className="relative z-20 flex flex-col h-full px-5 sm:px-6 md:px-8 lg:px-20 pt-5 md:pt-10">
           {/* Main heading */}
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="text-[2.5rem] sm:text-[3.5rem] md:text-[5rem] lg:text-[7rem] xl:text-[9rem] 2xl:text-[11rem] font-black uppercase leading-[0.85] tracking-tight"
-            style={{ fontFamily: 'var(--font-display)', color: 'hsl(85, 40%, 8%)' }}
+            style={{ fontFamily: 'var(--font-display)', color: 'hsl(var(--primary-foreground))' }}
           >
             ABDUL MATEEN
           </motion.h1>
@@ -125,7 +118,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.4 }}
                 className="hidden md:flex flex-col gap-4 max-w-[200px] lg:max-w-[240px] pb-4"
               >
-                <p className="text-xs lg:text-sm leading-relaxed text-primary-foreground">
+                <p className="text-xs lg:text-sm leading-relaxed text-white">
                   What makes my development unique is the combination of technical expertise and a passion for clean, scalable architecture
                 </p>
                 <div className="flex gap-2 items-center">
@@ -145,7 +138,7 @@ const HeroSection = () => {
               >
                 {/* Left text + socials */}
                 <div className="flex-1 min-w-0 pb-2 pr-2 z-20">
-                  <p className="text-[9px] sm:text-[10px] leading-relaxed text-primary-foreground mb-2">
+                  <p className="text-[9px] sm:text-[10px] leading-relaxed text-white mb-2">
                     Technical expertise with a passion for clean, scalable architecture
                   </p>
                   <div className="flex gap-1.5 items-center flex-wrap">
@@ -163,7 +156,7 @@ const HeroSection = () => {
 
                 {/* Right text */}
                 <div className="flex-1 min-w-0 pb-2 pl-2 z-20">
-                  <p className="text-[9px] sm:text-[10px] leading-relaxed text-right text-primary-foreground">
+                  <p className="text-[9px] sm:text-[10px] leading-relaxed text-right text-white">
                     Each line of code tells a story, building bridges between ideas and reality
                   </p>
                 </div>
@@ -179,7 +172,7 @@ const HeroSection = () => {
                 transition={{ duration: 0.7, delay: 0.5 }}
                 className="hidden md:flex flex-col items-end gap-4 max-w-[220px] lg:max-w-[260px] pb-4"
               >
-                <p className="text-xs lg:text-sm leading-relaxed text-right text-primary-foreground">
+                <p className="text-xs lg:text-sm leading-relaxed text-right text-white">
                   Immerse yourself in a world where each line of code tells a story, building the bridges between ideas and digital reality
                 </p>
                 <a href="#about" className="scroll-indicator !w-8 !h-8">
