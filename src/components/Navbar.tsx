@@ -6,6 +6,14 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -29,10 +37,10 @@ const Navbar = () => {
       <div className="flex items-center gap-6 md:gap-8">
         {isHome ? (
           <>
-            <a href="#about" className="nav-link text-xs md:text-sm">About</a>
-            <a href="#works" className="nav-link text-xs md:text-sm">Works</a>
-            <a href="#skills" className="nav-link text-xs md:text-sm">Skills</a>
-            <a href="#contact" className="nav-link text-xs md:text-sm">Contact</a>
+            <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="nav-link text-xs md:text-sm">About</a>
+            <a href="#works" onClick={(e) => handleScroll(e, 'works')} className="nav-link text-xs md:text-sm">Works</a>
+            <a href="#skills" onClick={(e) => handleScroll(e, 'skills')} className="nav-link text-xs md:text-sm">Skills</a>
+            <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="nav-link text-xs md:text-sm">Contact</a>
           </>
         ) : (
           <>

@@ -1,6 +1,7 @@
 import { ArrowUpRight, Shield, Layers, GitMerge, Zap, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import AnimatedSection from "./AnimatedSection";
+import { ContactModal } from "./ContactModal";
 import logoIcon from "@/assets/logo-icon.svg";
 
 const stats = [
@@ -32,9 +33,11 @@ const AboutSection = () => {
           <p className="text-body text-base md:text-lg max-w-xl leading-relaxed">
             I specialize in building end-to-end full-stack applications and architecting secure, scalable cloud infrastructure. By bridging the gap between development and operations, I deliver high-performance user interfaces backed by robust CI/CD pipelines and zero-downtime deployments.
           </p>
-          <a href="mailto:mateenqammat@gmail.com" className="w-fit flex items-center gap-2 text-sm uppercase tracking-widest font-semibold border-b-2 border-primary pb-1 text-foreground hover:text-primary transition-colors">
-            Contact Me <ArrowUpRight size={16} className="text-primary" />
-          </a>
+          <ContactModal>
+            <button className="w-fit flex items-center gap-2 text-sm uppercase tracking-widest font-semibold border-b-2 border-primary pb-1 text-foreground hover:text-primary transition-colors">
+              Contact Me <ArrowUpRight size={16} className="text-primary" />
+            </button>
+          </ContactModal>
         </AnimatedSection>
       </div>
 
@@ -84,9 +87,11 @@ const AboutSection = () => {
               </p>
             </div>
             
-            <a href="mailto:mateenqammat@gmail.com" className="relative z-10 w-full py-3.5 px-4 bg-primary text-primary-foreground rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-primary/20">
-               Get In Touch <ArrowUpRight size={18} />
-            </a>
+            <ContactModal>
+              <button className="relative z-10 w-full py-3.5 px-4 bg-primary text-primary-foreground rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-primary/90 hover:scale-[1.02] transition-all duration-300 shadow-lg shadow-primary/20">
+                 Get In Touch <ArrowUpRight size={18} />
+              </button>
+            </ContactModal>
           </div>
         </AnimatedSection>
 

@@ -67,6 +67,14 @@ const DownloadResumeButton = ({ size = "md" }: { size?: "sm" | "md" }) => {
 const HeroSection = () => {
   const [imgLoaded, setImgLoaded] = useState(false);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="hero" className="relative h-[100dvh] flex flex-col">
       {/* Main card area wrapper - relative for portrait positioning */}
@@ -175,7 +183,7 @@ const HeroSection = () => {
                 <p className="text-xs lg:text-sm leading-relaxed text-right text-white">
                   Immerse yourself in a world where each line of code tells a story, building the bridges between ideas and digital reality
                 </p>
-                <a href="#about" className="scroll-indicator !w-8 !h-8">
+                <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="scroll-indicator !w-8 !h-8">
                   <ChevronDown size={16} />
                 </a>
               </motion.div>
@@ -225,12 +233,12 @@ const HeroSection = () => {
         transition={{ duration: 0.6, delay: 0.7 }}
         className="flex-shrink-0 flex justify-center gap-6 sm:gap-8 md:gap-12 py-3 md:py-4"
       >
-        <a href="#about" className="nav-link text-xs md:text-sm">About</a>
-        <a href="#works" className="nav-link text-xs md:text-sm">Works</a>
-        <a href="#skills" className="nav-link text-xs md:text-sm">Skills</a>
+        <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="nav-link text-xs md:text-sm">About</a>
+        <a href="#works" onClick={(e) => handleScroll(e, 'works')} className="nav-link text-xs md:text-sm">Works</a>
+        <a href="#skills" onClick={(e) => handleScroll(e, 'skills')} className="nav-link text-xs md:text-sm">Skills</a>
         <Link to="/projects" className="nav-link text-xs md:text-sm">Projects</Link>
         <Link to="/blog" className="nav-link text-xs md:text-sm">Blog</Link>
-        <a href="#contact" className="nav-link text-xs md:text-sm">Contact</a>
+        <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="nav-link text-xs md:text-sm">Contact</a>
       </motion.nav>
     </section>
   );

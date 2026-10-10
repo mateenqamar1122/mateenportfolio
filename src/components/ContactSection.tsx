@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Rocket, Award, ArrowUpRight, ExternalLink } from "lucide-react";
 import { GithubIcon as Github, LinkedinIcon as Linkedin, TwitterIcon as Twitter } from "./Icons";
 import AnimatedSection from "./AnimatedSection";
+import { ContactModal } from "./ContactModal";
 
 const timeline = [
   {
@@ -52,8 +53,16 @@ const socials = [
 ];
 
 const ExperienceSection = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="experience" className="px-6 md:px-12 lg:px-20 py-24">
+    <section id="contact" className="px-6 md:px-12 lg:px-20 py-24">
       {/* Header */}
       <AnimatedSection>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-20">
@@ -157,15 +166,16 @@ const ExperienceSection = () => {
             </p>
           </div>
           <div className="flex flex-col items-center gap-4">
-            <motion.a
-              href="mailto:mateenqammat@gmail.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 rounded-full bg-primary-foreground text-primary font-semibold text-sm flex items-center gap-2 transition-all duration-300"
-              style={{ fontFamily: 'var(--font-body)' }}
-            >
-              Get In Touch <ArrowUpRight size={16} />
-            </motion.a>
+            <ContactModal>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 rounded-full bg-primary-foreground text-primary font-semibold text-sm flex items-center gap-2 transition-all duration-300"
+                style={{ fontFamily: 'var(--font-body)' }}
+              >
+                Get In Touch <ArrowUpRight size={16} />
+              </motion.button>
+            </ContactModal>
             <div className="flex gap-3">
               {socials.map((s) => (
                 <motion.a
@@ -189,10 +199,10 @@ const ExperienceSection = () => {
       <AnimatedSection delay={0.4} className="mt-12">
         <div className="flex flex-col items-center gap-6">
           <nav className="flex gap-8 md:gap-12">
-            <a href="#about" className="nav-link text-xs md:text-sm">About</a>
-            <a href="#works" className="nav-link text-xs md:text-sm">Works</a>
-            <a href="#skills" className="nav-link text-xs md:text-sm">Skills</a>
-            <a href="#experience" className="nav-link text-xs md:text-sm">Experience</a>
+            <a href="#about" onClick={(e) => handleScroll(e, 'about')} className="nav-link text-xs md:text-sm">About</a>
+            <a href="#works" onClick={(e) => handleScroll(e, 'works')} className="nav-link text-xs md:text-sm">Works</a>
+            <a href="#skills" onClick={(e) => handleScroll(e, 'skills')} className="nav-link text-xs md:text-sm">Skills</a>
+            <a href="#contact" onClick={(e) => handleScroll(e, 'contact')} className="nav-link text-xs md:text-sm">Contact</a>
           </nav>
         </div>
       </AnimatedSection>
